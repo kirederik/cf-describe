@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+cwd="$(dirname "$0")"
+
+pushd "$cwd/.."
+vgo build ./...
+cf uninstall-plugin describe
+cf install-plugin -f cf-describe-plugin
+popd
+echo ""
+echo ""
